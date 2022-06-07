@@ -85,6 +85,29 @@ namespace Careerio.Data
                     "udział w podejmowaniu decyzji dotyczących architektury stosowanych rozwiązań", "tworzenie testów automatycznych","wsparcie pozostałych członków zespołu podczas prac implementacyjnych" }
                     }
                     
+                },
+                new JobOffer
+                {
+                    JobTitle = "Frontemd Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 1,
+                    ExperienceLevelId = 4,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 3,
+                    SalaryFrom = 12000,
+                    SalaryTo = 16000,
+                    CompanyId = companies["Nokia"],
+                    Requirement = new Requirement()
+                    {
+                        Requirements = new string[] { "Zdolności organizacyjne", "Znajomość HTML5, CSS, JavaScript (es6+)", "Znajomość narzędzi do automatyzacji pracy jak Gulp albo Webpack itp.",
+                    "Znajomość różnic w interpretacji kodu przez różne przeglądarki","Umiejętność tworzenia stron opartych na rozwiązaniach Responsive Web Design"}
+                    },
+                    Responsibility = new Responsibility()
+                    {
+                        Responsibilities = new string[] { "Analizowanie i implementacja wymagań klienta", "Projektowanie i wdrażanie nowych sklepów internetowych z wykorzystaniem autorskiego systemu CMS",
+                    "Utrzymywanie sklepów internetowych, wdrażanie/modyfikowanie funkcjonalności na życzenie klienta, reagowanie na awarie","Optymalizowanie istniejącego kodu sklepów internetowych",
+                    "Rozwijanie autorskiego systemu CMS"}
+                    }
                 });
             context.SaveChanges();
         }
