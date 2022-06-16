@@ -21,10 +21,8 @@ namespace Careerio.Migrations
 
             modelBuilder.Entity("Careerio.Authentication.Role", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -52,8 +50,8 @@ namespace Careerio.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<byte>("RoleId")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 

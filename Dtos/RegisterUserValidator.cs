@@ -15,7 +15,7 @@ namespace Careerio.Dtos
             RuleFor(x => x.Login).NotEmpty().Length(4, 20).Matches(expression: "^[A-Za-z0-9]*$").WithMessage("Login musi składać się z 4-20 znaków oraz nie może zawierać znaków specjalnych.");
             RuleFor(x => x.Password).Length(7, 15).Matches(expression: "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{7,15}$").WithMessage("Hasło musi składać się z 7-15 znaków" +
                 "zawierających przynajmniej jedną cyfrę i znak specjalny.");
-            RuleFor(x => x.ConfirmPassword).Equal(e => e.Password);
+
             RuleFor(x => x.Email)
                 .Custom((value, context) =>
                 {

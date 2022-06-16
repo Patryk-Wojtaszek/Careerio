@@ -21,8 +21,8 @@ namespace Careerio.Controllers
         [HttpPost("register")]
         public ActionResult RegisterUser([FromBody] RegisterUserDto dto)
         {
-            _account.RegisterUser(dto);
-            return Ok();
+          string token =  _account.RegisterUser(dto);
+            return Ok(token);
         }
         [HttpPost("login")]
         public ActionResult Login([FromBody] LoginDto dto)

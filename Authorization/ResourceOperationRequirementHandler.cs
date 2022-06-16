@@ -19,7 +19,7 @@ namespace Careerio.Authorization
 
             var userId = context.User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value;
             var role = context.User.FindFirst(c => c.Type == ClaimTypes.Role).Value;
-            if (company.CreatedById == int.Parse(userId) || role=="Admin")
+            if (company.CreatedById == int.Parse(userId) || role == "Admin")
             {
                 context.Succeed(requirement);
             }

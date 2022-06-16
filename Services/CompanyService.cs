@@ -21,7 +21,7 @@ namespace Careerio.Services
         private readonly IMapper _mapper;
         private readonly IAuthorizationService _authorizationService;
         private readonly IUserContextService _userContextService;
-       
+
 
         public CompanyService(CareerioDbContext context, IMapper mapper, IAuthorizationService authorizationService, IUserContextService userContextService)
         {
@@ -45,11 +45,11 @@ namespace Careerio.Services
         {
             var companies = _context
                 .Companies
-                .Include(c=>c.Address)
-                .Include(c=>c.Benefit)
-                .Include(c=>c.Gallery)
-                .Include(c=>c.RelatedIndustry)
-                .Include(c=>c.Technology)
+                .Include(c => c.Address)
+                .Include(c => c.Benefit)
+                .Include(c => c.Gallery)
+                .Include(c => c.RelatedIndustry)
+                .Include(c => c.Technology)
                 .ToList();
             var companiesDto = _mapper.Map<List<CompanyDto>>(companies);
             return companiesDto;
@@ -77,7 +77,7 @@ namespace Careerio.Services
         public void DeleteCompany(int id)
         {
             var company = _context.Companies.FirstOrDefault(c => c.Id == id);
-            if(company is null)
+            if (company is null)
             {
                 throw new NotFoundException("Nie znaleziono firmy");
             }
@@ -88,12 +88,22 @@ namespace Careerio.Services
             {
                 throw new ForbidException("Forbidden");
             }
+            var address = _context.Addresses.FirstOrDefault(c => c.Company == company);
+            var benefit = _context.Benefits.FirstOrDefault(c => c.Company == company);
+            var gallery = _context.Galleries.FirstOrDefault(c => c.Company == company);
+            var industry = _context.RelatedIndustries.FirstOrDefault(c => c.Company == company);
+            var technology = _context.Technologies.FirstOrDefault(c => c.Company == company);
+            _context.Remove(address);
+            _context.Remove(benefit);
+            _context.Remove(gallery);
+            _context.Remove(industry);
+            _context.Remove(technology);
             _context.Remove(company);
             _context.SaveChanges();
         }
         public bool Update(int id, UpdateCompanyDto dto)
         {
-           
+
 
             var company = _context.Companies.FirstOrDefault(c => c.Id == id);
             if (company is null)
@@ -101,26 +111,26 @@ namespace Careerio.Services
                 return false;
             }
 
-           var authorizationResult = _authorizationService.AuthorizeAsync(_userContextService.User, company, new ResourceOperationRequirement(ResourceOperation.Update)).Result ;
+            var authorizationResult = _authorizationService.AuthorizeAsync(_userContextService.User, company, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
 
-            if(!authorizationResult.Succeeded)
+            if (!authorizationResult.Succeeded)
             {
                 throw new ForbidException("Forbidden");
             }
 
             company.DateOfStarting = dto.DateOfStarting;
             company.Email = dto.Email;
-   
+
             company.ImageUrl = dto.ImageUrl;
             company.Industry = dto.Industry;
             company.LongDescription = dto.LongDescription;
             company.Name = dto.Name;
             company.NumberOfEmployees = dto.NumberOfEmployees;
-    
+
             company.ShortDescription = dto.ShortDescription;
-      
+
             company.Url = dto.Url;
-            company.Address = new Address() { City = dto.City, Country = dto.Country, PostCode = dto.PostCode, Province = dto.Province, Street = dto.Street};
+            company.Address = new Address() { City = dto.City, Country = dto.Country, PostCode = dto.PostCode, Province = dto.Province, Street = dto.Street };
             company.Benefit = new Benefit() { Benefits = dto.Benefits };
             company.Gallery = new Gallery() { Photos = dto.Photos };
             company.RelatedIndustry = new RelatedIndustry() { RelatedIndustries = dto.RelatedIndustries };
@@ -130,6 +140,6 @@ namespace Careerio.Services
             return true;
         }
 
-     
+
     }
 }

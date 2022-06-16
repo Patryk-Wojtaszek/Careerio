@@ -14,6 +14,7 @@ namespace Careerio.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class CompanyController : ControllerBase
     {
         private readonly ICompany _company;
@@ -24,7 +25,7 @@ namespace Careerio.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="Employer, Admin")]
+       
         public ActionResult AddCompany([FromBody]AddCompanyDto dto)
         {
             var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
@@ -33,7 +34,7 @@ namespace Careerio.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Employer, Admin, User")]
+        [AllowAnonymous]
         public ActionResult<IEnumerable<CompanyDto>> GetCompanies()
         {
             var companiesDto = _company.GetCompanies();
@@ -41,7 +42,7 @@ namespace Careerio.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Employer, Admin, User")]
+        [AllowAnonymous]
         public IActionResult GetCompany (int id )
         {
             var company = _company.GetCompanyById(id);
@@ -49,14 +50,14 @@ namespace Careerio.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Employer, Admin")]
+        
         public void DeleteCompany(int id )
         {
             _company.DeleteCompany(id);
          
         }
         [HttpPut("{id}")]
-        [Authorize(Roles = "Employer, Admin")]
+        
 
         public ActionResult UpdateCompany([FromBody] UpdateCompanyDto dto, [FromRoute] int id)
         {

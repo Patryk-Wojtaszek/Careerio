@@ -9,8 +9,7 @@ namespace Careerio.Dtos
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
         public string Login { get; set; }
-        public int RoleId { get; set; }
+        public byte RoleId = 1;
     }
 }

@@ -13,6 +13,7 @@ namespace Careerio.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class JobOfferController : ControllerBase
     {
         private readonly IJobOffer _jobOffer;
@@ -23,7 +24,7 @@ namespace Careerio.Controllers
         }
 
         [HttpGet]
-        
+        [AllowAnonymous]
         public ActionResult <IEnumerable<JobOfferDto>> GetJobOffers()
         {
             var jobOffersDto = _jobOffer.GetJobOffers();
@@ -31,14 +32,14 @@ namespace Careerio.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Employer, Admin")]
+        
         public ActionResult AddJobOffer([FromBody]AddJobOfferDto dto)
         {
             var id = _jobOffer.Add(dto);
             return Created($"{id}", null);
         }
         [HttpPut("{id}")]
-        [Authorize(Roles = "Employer, Admin")]
+       
         public ActionResult UpdateJobOffer ([FromBody] UpdateJobOfferDto dto, [FromRoute] int id)
         {
             var isUpdated = _jobOffer.Update(id, dto);
@@ -49,13 +50,14 @@ namespace Careerio.Controllers
             return Ok();
         }
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult GetJobOffers(int id)
         {
             var jobOffer = _jobOffer.GetJobOfferById(id);
             return Ok(jobOffer);
         }
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Employer, Admin")]
+     
         public void DeleteCompany(int id )
         {
             _jobOffer.Delete(id);

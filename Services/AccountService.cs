@@ -28,7 +28,7 @@ namespace Careerio.Services
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
         }
-        public void RegisterUser (RegisterUserDto dto)
+        public string RegisterUser(RegisterUserDto dto)
         {
             var newUser = new User()
             {
@@ -41,6 +41,26 @@ namespace Careerio.Services
             newUser.PasswordHash = hashedPassword;
             _context.Users.Add(newUser);
             _context.SaveChanges();
+            var user = _context.Users
+                .Include(x => x.Role)
+                .FirstOrDefault(x => x.Login == dto.Login);
+
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name,$"{user.Login}"),
+                new Claim(ClaimTypes.Role,$"{user.Role.Name}")
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.Now.AddDays(_authenticationSettings.JwtExpireDays);
+
+            var token = new JwtSecurityToken(_authenticationSettings.JwtIssuer, _authenticationSettings.JwtIssuer,
+                claims, expires: expires, signingCredentials: cred);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(token);
+
         }
         public string GenerateJwt(LoginDto dto)
         {
@@ -73,5 +93,5 @@ namespace Careerio.Services
             return tokenHandler.WriteToken(token);
         }
     }
-   
+
 }

@@ -30,8 +30,12 @@ namespace Careerio.Data
                 SeedHours(context);
                 SeedJobOffers(context);
                 SeedRoles(context);
+             
             }
         }
+
+ 
+
         private static void SeedRoles(CareerioDbContext context)
         {
             if (context.Roles.Any())
@@ -42,14 +46,12 @@ namespace Careerio.Data
             context.Roles.AddRange(
                 new Role
                 {
+                    Id =1,
                     Name = "User"
                 },
                 new Role
                 {
-                    Name = "Employer"
-                },
-                new Role
-                {
+                    Id = 73,
                     Name = "Admin"
                 });
             context.SaveChanges();
@@ -88,7 +90,7 @@ namespace Careerio.Data
                 },
                 new JobOffer
                 {
-                    JobTitle = "Frontemd Developer",
+                    JobTitle = "Frontend Developer",
                     DateTime = DateTime.Now,
                     WorkingHoursID = 1,
                     ExperienceLevelId = 4,
@@ -108,7 +110,238 @@ namespace Careerio.Data
                     "Utrzymywanie sklepów internetowych, wdrażanie/modyfikowanie funkcjonalności na życzenie klienta, reagowanie na awarie","Optymalizowanie istniejącego kodu sklepów internetowych",
                     "Rozwijanie autorskiego systemu CMS"}
                     }
-                });
+                },
+                new JobOffer
+                {
+                    JobTitle="Tester oprogramowania",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 4,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 1,
+                    SalaryFrom = 13000,
+                    SalaryTo = 14500,
+                    CompanyId = companies["Motorola"],
+                    Requirement = new Requirement
+                    {
+                        Requirements = new string[] { "Min. 4 lata doświadczenia jako tester", "Doświadczenie w testowaniu backendu i frontend", "Biegłość w testach funkcjonalnych, E2E i UAT w ramach SDLC i STLC",
+                        "Bardzo dobra znajomość różnych faz i typów testowania: Integracja, UAT, E2E, testy funkcjonalne", "Praktyczne doświadczenie z metodologiami Agile (preferowany Scrum)",
+                        "Umiejętność komunikowania się w języku angielskim na co dzień w mowie i piśmie (min. B2)", "Doskonałe umiejętności zarządzania czasem i umiejętność dotrzymywania terminów"}
+                    },
+                    Responsibility = new Responsibility
+                    {
+                        Responsibilities = new string[] { "Analiza wymagań biznesowych i współpraca z analitykami biznesowymi/Product Ownerem", "Identyfikowanie przypadków testowych na podstawie wymagań",
+                        "Tworzenie i wykonywanie testów manualnych i przypadków testowych w celu zapewnienia zgodności ze specyfikacjami i dokumentacją","Wykonywanie testów funkcjonalnych i E2E",
+                        "Identyfikacja, raportowanie, zarządzanie defektami","Testowanie backendu i frontendu, w tym API, bazy danych i Salesforce"}
+                    }
+
+
+                },
+                new JobOffer
+                {
+                    JobTitle="Android Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 1,
+                    ExperienceLevelId = 2,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 2,
+                    SalaryFrom = 6000,
+                    SalaryTo = 7500,
+                    CompanyId = companies["Samsung"],
+                    Requirement = new Requirement
+                    {
+                        Requirements= new string[] { "2-lata doświadczenia w pisaniu aplikacji na Androida", "Praktyczna znajomość komponentów Android SDK",
+                        "Znajomość Kotlina i Spring Boot", "Poparta doświadczeniem umiejętność optymalizowania i profilowania aplikacji w aspektach: CPU, GPU, pamięć, sieć"}
+
+                    },
+                    Responsibility = new Responsibility
+                    {
+                        Responsibilities= new string[] { "Analiza techniczna", "Rozwój aplikacji zarządzanych w Android Enterprice", "Budowanie testów jednostkowych",
+                        "Dzielenie się wiedzą we własnym obszarze wiedzy specjalistycznej", "Optymalizowanie i profilowanie aplikacji", "Uczestnictwo w projektach rozbudowy systemów biznesowych"}
+                    }
+
+                },
+                new JobOffer
+                {
+                    JobTitle = "PHP Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 1,
+                    ExperienceLevelId = 4,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 2,
+                    SalaryFrom = 12000,
+                    SalaryTo = 17500,
+                    CompanyId = companies["Samsung"],
+                    Requirement = new Requirement
+                    {
+                        Requirements= new string[] { "bardzo dobra znajomość PHP 7+ oraz frameworka Symfony w wersji 4+","bardzo dobra umiejętność korzystania z Doctrine",
+                        "znajomość lub chęć nauczenia się podstaw ElasticSearch", "umiejętność pracy z git","znajomość jQuery, JavaScript, HTML, CSS, SASS, vue.js"}
+                    },
+                    Responsibility = new Responsibility
+                    {
+                        Responsibilities=new string[] { "programowanie funkcjonalności (OOP)","refaktoryzacja i optymalizacja kodu","debugowanie i naprawianie błędów",
+                        "proponowanie technicznych rozwiązań problemów","dbanie o bezpieczeństwo danych klientów"}
+                    }
+                },
+                new JobOffer
+                {
+                    JobTitle = "Ruby on Rails Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 1,
+                    ExperienceLevelId = 4,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 2,
+                    SalaryFrom = 12000,
+                    SalaryTo = 17500,
+                    CompanyId = companies["Samsung"],
+                    Requirement = new Requirement
+                    {
+                        Requirements=new string[] { "min. 2 lata doświadczenia produkcyjnego w Ruby/Ruby on Rails", "JavaScript, HTML, CSS oraz GIT",
+                        "Bazy danych: MySQL lub PostgreSQL","Język angielskim w stopniu umożliwiającym czytanie dokumentacji"}
+                    },
+                    Responsibility=new Responsibility
+                    {
+                        Responsibilities=new string[] { "dostarczanie nowych funkcjonalności", "proponowanie technicznych rozwiązań problemów" }
+                    }
+                },
+                new JobOffer
+                {
+                    JobTitle = "Frontend developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 1,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 2,
+                    SalaryFrom = 3000,
+                    SalaryTo = 4000,
+                    CompanyId = companies["Motorola"],
+                    Requirement = new Requirement
+                    {
+                        Requirements=new string[] { "Jesteś studentem informatyki, matematyki, fizyki lub ekonometrii", "Posiadasz praktyczną znajomość języka JavaScript",
+                        "Wiesz co to react i nie boisz się używać TypeScript'a","Znasz podstawowe komendy gita"}
+                    },
+                    Responsibility=new Responsibility
+                    {
+                        Responsibilities=new string[] {"Udział w innowacyjnych projektach", "refaktoryzacja i optymalizacja kodu", "debugowanie i naprawianie błędów"}
+                    }
+
+                },
+                new JobOffer
+                {
+
+                    JobTitle = "Analityk danych marketingu i sprzedaży",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 3,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 1,
+                    SalaryFrom = 13000,
+                    SalaryTo = 14000,
+                    CompanyId = companies["Motorola"],
+                    Requirement = new Requirement
+                    {
+                        Requirements=new string[] { "wykształcenie wyższe preferowane kierunki z obszaru STEM i ekonometria, mile widziana specjalizacja w analizie danych", "biegła znajomość systemów i programów: PowerBI (w tym języka DAX, dobra orientacja w jezyku M), HotJar, Google Ads, Meta Ads, Google Analytics, Google Data Studio, Google Optimize",
+                        "znajomość języka R lub Python, w tym szczególnie bibliotek do przetwarzania danych oraz automatyzacji procesów pobierania danych","znajomość SQL (preferowany PostgreSQL, MySQL)"}
+                    },
+                    Responsibility = new Responsibility
+                    {
+                        Responsibilities=new string[] { "Bieżące raportowanie i analiza przyjętych mierników", "Analiza sprzedażowa platform i stron sprzedażowych w obsługiwanych regionach",
+                        "Optymalizacja - dostosowywanie witryn do oczekiwań użytkowników oraz zwiększenia sprzedaży","Samodzielny dobór narzędzi analitycznych, oraz reagowanie na bieżące wyniki raportów"}
+                    }
+
+                },
+                new JobOffer
+                {
+                    JobTitle = "Java Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 3,
+                    RemoteRecruitmentId = 1,
+                    TypeOfContractId = 1,
+                    SalaryFrom = 13000,
+                    SalaryTo = 14000,
+                    CompanyId = companies["Nokia"],
+                    Requirement=new Requirement
+                    {
+                        Requirements= new string[] { "Dobra znajomość Javy","Dobra znajomość Springa","Znajomość JavaScriptu","Biegłość w zrozumieniu i swobodnym poruszaniu się w terminologii techniczno-architektonicznej.",
+                        "Elastyczne podejście do pracy w różnych projektach i różnych frameworkach (Hybris, rozwoje i utrzymanie systemu itp.)"}
+                    },
+                    Responsibility=new Responsibility
+                    {
+                        Responsibilities=new string[] {"Bieżący rozwój systemu w sprintach","Rozwiązywanie problemów produkcyjnych zgłaszanych przez klienta","Współpraca ze specjalistami ds. hostingu aplikacji oraz inżynierami DevOps",
+                        "Tworzenie dokumentacji technicznej wdrażanego rozwiązania"}
+                    }
+
+                },
+                new JobOffer
+                {
+                    JobTitle = "Architekt systemów",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 2,
+                    RemoteRecruitmentId = 2,
+                    TypeOfContractId = 1,
+                    SalaryFrom = 6000,
+                    SalaryTo = 10000,
+                    CompanyId = companies["Nokia"],
+                    Requirement=new Requirement
+                    {
+                        Requirements=new string[] {"wykształcenie techniczne lub ekonomiczne (informatyka, matematyka, ekonomia)","umiejętność przełożenia wymagań biznesowych na wymagania techniczne",
+                        "doświadczenie w projektowaniu, analizie oraz implementacji systemów informatycznych","umiejętność projektowania systemów z wykorzystaniem gotowych elementów open-source","umiejętność dokumentowania architektury i funkcjonalności systemów zgodnie z trendami rynkowymi",
+                        "umiejętność przygotowywania przypadków użycia i przypadków testowych"}
+                    },
+                    Responsibility=new Responsibility
+                    {
+                        Responsibilities=new string[] {"analiza posiadanych przez klienta systemów","projektowanie nowych rozwiązań", "specyfikowanie funkcji systemu i ustalanie zakresu","projektowanie struktur danych",
+                        "śledzenie trendów rynkowych"}
+                    }
+                    
+                },
+                new JobOffer
+                {
+                    JobTitle = "Java Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 2,
+                    RemoteRecruitmentId = 2,
+                    TypeOfContractId = 3,
+                    SalaryFrom = 6000,
+                    SalaryTo = 10000,
+                    CompanyId = companies["Comarch"],
+                    Requirement=new Requirement
+                    {
+                        Requirements=new string[] {"Min. 2 lata doświadczenia komercyjnego w programowaniu w Java","Dobra znajomość Java 8 i wyższej, Spring, Hibernate","Doświadczenie w implementacji aplikacji z wykorzystaniem technologii JEE (Spring, REST, Web Services)",
+                        "Podstawowa znajomość narzędzi: Gradle, Maven, GIT"}
+                    },
+                    Responsibility=new Responsibility
+                    { Responsibilities=new string[] {"Rozwój i utrzymanie obecnego oprogramowania","Udział w projektach typu PoC (weryfikacje użyteczności technologii)",
+                    "Tworzenie rozwiązań w oparciu o język Java oraz relacyjną bazę Oracle, w tym udział w projektowaniu i modelowaniu nowych rozwiązań"}
+                    }
+                },
+                new JobOffer
+                {
+                    JobTitle = "Python Developer",
+                    DateTime = DateTime.Now,
+                    WorkingHoursID = 2,
+                    ExperienceLevelId = 2,
+                    RemoteRecruitmentId = 2,
+                    TypeOfContractId = 3,
+                    SalaryFrom = 6000,
+                    SalaryTo = 10000,
+                    CompanyId = companies["Comarch"],
+                    Requirement=new Requirement
+                    {
+                        Requirements=new string[] {"Min. 3 letnie komercyjne doświadczenie w tworzeniu projektów z wykorzystaniem Pythona 3.X.","Znajomość JavaScript w wersji co najmniej ES6 wraz z HTML, CSS (SCSS).",
+                        "Znajomość jednego z popularnych frameworków webowych (Django, Flask).","Umiejętność biegłego korzystania z baz relacyjnych (PostgreSQL, MySQL) oraz nierelacyjnych (MongoDB, Redis).","Umiejętność posługiwania się Linuxem.",
+                        "Umiejętność analitycznego myślenia, kreatywność.","Znajomość zasad projektowania obiektowego i wzorców projektowych."}
+                    },
+                    Responsibility=new Responsibility
+                    {
+                        Responsibilities=new string[] {"Tworzenie skalowalnych rozwiązań opartych o RESTowe API, które służą do komunikacji z aplikacjami mobilnymi.","Nowoczesne aplikacje webowe wykorzystujące najnowsze technologie."}
+                    }
+                }
+            
+                );
             context.SaveChanges();
         }
 

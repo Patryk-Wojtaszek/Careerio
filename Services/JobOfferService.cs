@@ -42,7 +42,7 @@ namespace Careerio.Services
 
             var jobOffersDto = _mapper.Map<List<JobOfferDto>>(jobOffers);
             return jobOffersDto;
-   
+
         }
 
         public int Add(AddJobOfferDto dto)
@@ -58,9 +58,9 @@ namespace Careerio.Services
         public bool Update(int id, UpdateJobOfferDto dto)
         {
             var jobOffer = _context.JobOffers.FirstOrDefault(j => j.Id == id);
-            if(jobOffer is null)
+            if (jobOffer is null)
             {
-                
+
                 return false;
             }
             var authorizationResult = _authorizationService.AuthorizeAsync(_userContextService.User, jobOffer, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
@@ -117,6 +117,10 @@ namespace Careerio.Services
             {
                 throw new ForbidException("Forbidden");
             }
+            var requirement = _context.Requirements.FirstOrDefault(j => j.JobOffer == jobOffer);
+            _context.Remove(requirement);
+            var responsibility = _context.Responsibilities.FirstOrDefault(j => j.JobOffer == jobOffer);
+            _context.Remove(responsibility);
             _context.Remove(jobOffer);
             _context.SaveChanges();
         }

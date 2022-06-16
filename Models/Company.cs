@@ -31,6 +31,6 @@ namespace Careerio.Models
 
         public int? CreatedById { get; set; }
         public virtual User CreatedBy { get; set; }
-     
+
     }
 }

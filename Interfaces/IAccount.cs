@@ -8,7 +8,7 @@ namespace Careerio.Interfaces
 {
     public interface IAccount
     {
-        void RegisterUser(RegisterUserDto dto);
+        string RegisterUser(RegisterUserDto dto);
         string GenerateJwt(LoginDto dto);
     }
 }
