@@ -62,7 +62,12 @@ namespace Careerio
 
             services.AddControllers().AddFluentValidation();
             //services.AddCors(options =>options.AddDefaultPolicy(builder => builder.WithOrigins("https://careerio.pl")));
-            services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            }));
             services.AddDbContext<CareerioDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CareerioDbConnection")));
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<ICompany, CompanyService>();
