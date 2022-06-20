@@ -13,6 +13,7 @@ using Careerio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
 
 namespace Careerio.Services
 {
@@ -21,12 +22,14 @@ namespace Careerio.Services
         private readonly CareerioDbContext _context;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly AuthenticationSettings _authenticationSettings;
+        private readonly IMapper _mapper;
 
-        public AccountService(CareerioDbContext context, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings)
+        public AccountService(CareerioDbContext context, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings, IMapper mapper)
         {
             _context = context;
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
+            _mapper = mapper;
         }
         public string RegisterUser(RegisterUserDto dto)
         {
@@ -59,6 +62,7 @@ namespace Careerio.Services
                 claims, expires: expires, signingCredentials: cred);
 
             var tokenHandler = new JwtSecurityTokenHandler();
+            GetUser(user.Id);
             return tokenHandler.WriteToken(token);
 
         }
@@ -91,6 +95,13 @@ namespace Careerio.Services
 
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(token);
+        }
+
+        public UserDto GetUser(int id)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            var userDto = _mapper.Map<UserDto>(user);
+            return userDto;
         }
     }
 

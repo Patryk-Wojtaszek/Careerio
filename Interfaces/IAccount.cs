@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Careerio.Dtos;
+using Careerio.Authentication;
 
 namespace Careerio.Interfaces
 {
@@ -10,5 +11,8 @@ namespace Careerio.Interfaces
     {
         string RegisterUser(RegisterUserDto dto);
         string GenerateJwt(LoginDto dto);
+
+        UserDto GetUser(int id);
+
     }
 }
