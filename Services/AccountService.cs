@@ -62,7 +62,9 @@ namespace Careerio.Services
                 claims, expires: expires, signingCredentials: cred);
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            GetUser(user.Id);
+
+            var tokenString = tokenHandler.WriteToken(token);
+            GetUserByToken(tokenString);
             return tokenHandler.WriteToken(token);
 
         }
@@ -102,6 +104,17 @@ namespace Careerio.Services
             var user = _context.Users.FirstOrDefault(u => u.Id == id);
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
+        }
+
+        public UserDto GetUserByToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var id = int.Parse(tokenHandler.ReadJwtToken(token).Claims.First(c => c.Type== ClaimTypes.NameIdentifier).Value);
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            var userDto = _mapper.Map<UserDto>(user);
+            return userDto;
+            
+              
         }
     }
 

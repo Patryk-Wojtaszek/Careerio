@@ -14,5 +14,7 @@ namespace Careerio.Interfaces
 
         UserDto GetUser(int id);
 
+        UserDto GetUserByToken(string dto);
+
     }
 }

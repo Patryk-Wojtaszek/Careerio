@@ -30,10 +30,16 @@ namespace Careerio.Controllers
             string token = _account.GenerateJwt(dto);
             return Ok(token);
         }
-        [HttpGet("{id}")]
-        public ActionResult GetUser(int id)
+        //[HttpGet("{id}")]
+        //public ActionResult GetUser(int id)
+        //{
+        //    var user = _account.GetUser(id);
+        //    return Ok(user);
+        //}
+        [HttpGet]
+        public ActionResult GetUserByToken(string token)
         {
-            var user = _account.GetUser(id);
+            var user = _account.GetUserByToken(token);
             return Ok(user);
         }
     }
