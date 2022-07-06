@@ -23,7 +23,7 @@ namespace Careerio.Dtos
         public string Country { get; set; }
         public string[] Benefits { get; set; }
         public string[] Photos { get; set; }
-        public string[] RelatedIndustries { get; set; }
+
         public string[] Technologies { get; set; }
     }
 }

@@ -8,10 +8,9 @@ namespace Careerio.Dtos
     public class AddJobOfferDto
     {
         public string JobTitle { get; set; }
-        public DateTime? DateTime { get; set; }
+        
         public int SalaryFrom { get; set; }
         public int SalaryTo { get; set; }
-        public int CompanyId { get; set; }
         public byte TypeOfContractId { get; set; }
         public byte ExperienceLevelId { get; set; }
         public byte RemoteRecruitmentId { get; set; }

@@ -9,6 +9,10 @@ E:\Careerio\obj\Release\net5.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.Depend
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\FluentValidation.dll
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\FluentValidation.AspNetCore.dll
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\FluentValidation.DependencyInjectionExtensions.dll
+E:\Careerio\obj\Release\net5.0\PubTmp\Out\System.Web.Cors.dll
+E:\Careerio\obj\Release\net5.0\PubTmp\Out\System.Net.Http.Formatting.dll
+E:\Careerio\obj\Release\net5.0\PubTmp\Out\System.Web.Http.dll
+E:\Careerio\obj\Release\net5.0\PubTmp\Out\System.Web.Http.Cors.dll
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authorization.dll
 E:\Careerio\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Metadata.dll

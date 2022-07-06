@@ -20,7 +20,6 @@ namespace Careerio.Profiles
                 .ForMember(m => m.Photos, c => c.MapFrom(r => r.Gallery.Photos))
                 .ForMember(m => m.PostCode, c => c.MapFrom(r => r.Address.PostCode))
                 .ForMember(m => m.Province, c => c.MapFrom(r => r.Address.Province))
-                .ForMember(m => m.RelatedIndustries, c => c.MapFrom(r => r.RelatedIndustry.RelatedIndustries))
                 .ForMember(m => m.Street, c => c.MapFrom(r => r.Address.Street))
                 .ForMember(m => m.Technologies, c => c.MapFrom(r => r.Technology.Technologies));
 
@@ -28,7 +27,6 @@ namespace Careerio.Profiles
                 .ForMember(m => m.Address, c => c.MapFrom(dto => new Address() { City = dto.City, Country = dto.Country, PostCode = dto.PostCode, Province = dto.Province, Street = dto.Street }))
                 .ForMember(m => m.Benefit, c => c.MapFrom(dto => new Benefit() { Benefits = dto.Benefits }))
                 .ForMember(m => m.Gallery, c => c.MapFrom(dto => new Gallery() { Photos = dto.Photos }))
-                .ForMember(m => m.RelatedIndustry, c => c.MapFrom(dto => new RelatedIndustry() { RelatedIndustries = dto.RelatedIndustries }))
                 .ForMember(m => m.Technology, c => c.MapFrom(dto => new Technology() { Technologies = dto.Technologies }));
                 
 

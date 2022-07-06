@@ -12,7 +12,7 @@ namespace Careerio.Interfaces
         string RegisterUser(RegisterUserDto dto);
         string GenerateJwt(LoginDto dto);
 
-        UserDto GetUser(int id);
+        //UserDto GetUser(int id);
 
         UserDto GetUserByToken(string dto);
 

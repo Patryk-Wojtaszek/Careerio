@@ -62,12 +62,15 @@ namespace Careerio
 
             services.AddControllers().AddFluentValidation();
             //services.AddCors(options =>options.AddDefaultPolicy(builder => builder.WithOrigins("https://careerio.pl")));
-            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            services.AddCors(options =>
             {
-                builder.AllowAnyOrigin();
-                builder.AllowAnyHeader();
-                builder.AllowAnyMethod();
-            }));
+                options.AddPolicy("AllowAll",builder =>
+                {
+                    builder.WithOrigins().AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true);
+                 });
+                  });
+        
+         
             services.AddDbContext<CareerioDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CareerioDbConnection")));
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<ICompany, CompanyService>();
@@ -87,12 +90,12 @@ namespace Careerio
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors();
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseAuthentication();
+            
             app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -101,7 +104,8 @@ namespace Careerio
             });
 
             app.UseRouting();
-
+            app.UseCors("AllowAll");
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

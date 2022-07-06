@@ -22,8 +22,7 @@ namespace Careerio.Models
         public string Industry { get; set; }
         public string ImageUrl { get; set; }
         public string Email { get; set; }
-        public int RelatedIndustryId { get; set; }
-        public virtual RelatedIndustry RelatedIndustry { get; set; }
+
         public int TechnologyId { get; set; }
         public virtual Technology Technology { get; set; }
         public int? GalleryId { get; set; }

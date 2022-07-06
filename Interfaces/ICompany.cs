@@ -14,9 +14,10 @@ namespace Careerio.Interfaces
         IEnumerable<CompanyDto> GetCompanies();
 
         CompanyDto GetCompanyById(int id);
+        CompanyDto GetCompanyByUserId(int id);
 
         void DeleteCompany(int companyId);
 
-        bool Update(int id, UpdateCompanyDto dto);
+        CompanyDto Update(int id, UpdateCompanyDto dto);
     }
 }

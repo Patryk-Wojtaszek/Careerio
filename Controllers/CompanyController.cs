@@ -40,10 +40,16 @@ namespace Careerio.Controllers
             var companiesDto = _company.GetCompanies();
             return Ok(companiesDto);
         }
-
+        [HttpGet("userId={id}")]
+        [AllowAnonymous]
+        public ActionResult GetCompanyByUserId(int id)
+        {
+            var company = _company.GetCompanyByUserId(id);
+            return Ok(company);
+        }
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public IActionResult GetCompany (int id )
+        public IActionResult GetCompany(int id)
         {
             var company = _company.GetCompanyById(id);
             return Ok(company);
@@ -57,18 +63,12 @@ namespace Careerio.Controllers
          
         }
         [HttpPut("{id}")]
-        
-
         public ActionResult UpdateCompany([FromBody] UpdateCompanyDto dto, [FromRoute] int id)
         {
 
-            var isUpdated = _company.Update(id, dto);
-            if (!isUpdated)
-            {
-                return NotFound();
-            }
-            return Ok();
-
+            var company = _company.Update(id, dto);
+    
+            return Ok(company);
         }
     }
 }

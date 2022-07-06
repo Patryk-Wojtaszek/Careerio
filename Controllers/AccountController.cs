@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Careerio.Interfaces;
 using Careerio.Dtos;
+using Microsoft.AspNetCore.Cors;
+//using System.Web.Http.Cors;
 
 namespace Careerio.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("[controller]")]
     [ApiController]
+    
     public class AccountController : ControllerBase
     {
         private readonly IAccount _account;
@@ -28,6 +32,7 @@ namespace Careerio.Controllers
         public ActionResult Login([FromBody] LoginDto dto)
         {
             string token = _account.GenerateJwt(dto);
+            //Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return Ok(token);
         }
         //[HttpGet("{id}")]
@@ -36,11 +41,14 @@ namespace Careerio.Controllers
         //    var user = _account.GetUser(id);
         //    return Ok(user);
         //}
-        [HttpGet]
+        [HttpGet("{token}")]
         public ActionResult GetUserByToken(string token)
         {
             var user = _account.GetUserByToken(token);
             return Ok(user);
+
         }
+
+       
     }
 }

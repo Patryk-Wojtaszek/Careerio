@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Careerio\\Careerio.csproj": {}
+    "C:\\Users\\sniqq\\Desktop\\Careerio\\Careerio.csproj": {}
   },
   "projects": {
-    "E:\\Careerio\\Careerio.csproj": {
+    "C:\\Users\\sniqq\\Desktop\\Careerio\\Careerio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Careerio\\Careerio.csproj",
+        "projectUniqueName": "C:\\Users\\sniqq\\Desktop\\Careerio\\Careerio.csproj",
         "projectName": "Careerio",
-        "projectPath": "E:\\Careerio\\Careerio.csproj",
+        "projectPath": "C:\\Users\\sniqq\\Desktop\\Careerio\\Careerio.csproj",
         "packagesPath": "C:\\Users\\sniqq\\.nuget\\packages\\",
-        "outputPath": "E:\\Careerio\\obj\\",
+        "outputPath": "C:\\Users\\sniqq\\Desktop\\Careerio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -53,6 +53,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.0.2, )"
+            },
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

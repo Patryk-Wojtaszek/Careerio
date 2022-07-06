@@ -40,7 +40,6 @@ namespace Careerio.Data
         {
             if (context.Roles.Any())
             {
-                Console.WriteLine("Roles already seeded");
                 return;
             }
             context.Roles.AddRange(
@@ -58,6 +57,10 @@ namespace Careerio.Data
         }
         private static void SeedJobOffers(CareerioDbContext context)
         {
+            if(context.JobOffers.Any())
+            {
+                return;
+            }
             var companies = context.Companies
                 .ToDictionary(c => c.Name, c => c.Id);
            if(context.JobOffers.Any())
@@ -485,10 +488,7 @@ namespace Careerio.Data
                    {
                        Photos = new string[] { "https://inhire.io/images/company_company_common_profile_photo_0_10516_1593592701111.jpg", "https://pliki.propertydesign.pl/i/10/94/66/109466_r0_1140.jpg,", "https://pliki.propertydesign.pl/i/10/94/65/109465_1140.jpg" }
                    },
-                   RelatedIndustry = new RelatedIndustry()
-                   {
-                       RelatedIndustries = new string[] { "Bankowość", "Finanse", "Telekomunikacja" }
-                   },
+                
                    Technology = new Technology()
                    {
                        Technologies = new string[] { "Java", "Sql" }
@@ -521,10 +521,7 @@ namespace Careerio.Data
                    {
                        Photos = new string[] { "http://crn.thecamels.pl/wp-content/uploads/media/default/0001/16/059af28de040b036e10f6ac1572792f379c279f4.jpg", "https://i.iplsc.com/-/0002L6W2FMTB5SI8-C122-F4.jpg", "https://pliki.propertydesign.pl/i/06/49/89/064989_r0_1140.jpg" }
                    },
-                   RelatedIndustry = new RelatedIndustry()
-                   {
-                       RelatedIndustries = new string[] { "Technologiczne innowacje w usługach finansowych", "Bankowość" }
-                   },
+             
                    Technology = new Technology()
                    {
                        Technologies = new string[] { "Figma", "UxPin", "JavaScript" }
@@ -557,10 +554,7 @@ namespace Careerio.Data
                    {
                        Photos = new string[] { "https://www.comarch.pl/files-pl/file_54/lodz-comarch-fot-piotr-krajewski-1-jpg-lq_29_N_5D3_5244.jpg", "https://www.starosadeckie.info/wp-content/uploads/2021/08/Comarch-siedziba.jpg", "https://kariera.comarch.pl/files-pl/file_34/warszawa-comarch.jpg" }
                    },
-                   RelatedIndustry = new RelatedIndustry()
-                   {
-                       RelatedIndustries = new string[] { "Finanse", "Telekomunikacja" }
-                   },
+            
                    Technology = new Technology()
                    {
                        Technologies = new string[] { "Java", "Android" }
@@ -594,10 +588,7 @@ namespace Careerio.Data
                    {
                        Photos = new string[] { "https://prowly-uploads.s3.eu-west-1.amazonaws.com/uploads/4636/assets/91578/large-e40eceeaf9c283ebe2aa91c1478c1217.jpg", "https://bi.im-g.pl/im/f5/a9/13/z20616949V,Wroclawskie-biura-firmy-Nokia.jpg", "https://www.sztuka-wnetrza.pl/galleries/thumbs/fit_in_900x600/nokia2.jpg" }
                    },
-                   RelatedIndustry = new RelatedIndustry()
-                   {
-                       RelatedIndustries = new string[] { "Technologiczne innowacje w usługach finansowych", "Telekomunikacja" }
-                   },
+             
                    Technology = new Technology()
                    {
                        Technologies = new string[] { "Adobe Photoshop", "Jira" }

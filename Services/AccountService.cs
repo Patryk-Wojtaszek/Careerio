@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Headers;
 
 namespace Careerio.Services
 {
@@ -96,25 +98,28 @@ namespace Careerio.Services
                 claims, expires: expires, signingCredentials: cred);
 
             var tokenHandler = new JwtSecurityTokenHandler();
+   
             return tokenHandler.WriteToken(token);
         }
 
-        public UserDto GetUser(int id)
-        {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
-            var userDto = _mapper.Map<UserDto>(user);
-            return userDto;
-        }
+        //public UserDto GetUser(int id)
+        //{
+        //    var user = _context.Users.FirstOrDefault(u => u.Id == id);
+        //    var userDto = _mapper.Map<UserDto>(user);
+        //    return userDto;
+        //}
 
         public UserDto GetUserByToken(string token)
         {
+
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var id = int.Parse(tokenHandler.ReadJwtToken(token).Claims.First(c => c.Type== ClaimTypes.NameIdentifier).Value);
+            var id = int.Parse(tokenHandler.ReadJwtToken(token).Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
             var user = _context.Users.FirstOrDefault(u => u.Id == id);
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
-            
-              
+
+
         }
     }
 

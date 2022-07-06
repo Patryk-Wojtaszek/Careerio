@@ -49,11 +49,25 @@ namespace Careerio.Services
         {
             var jobOffer = _mapper.Map<JobOffer>(dto);
             jobOffer.CreatedById = _userContextService.GetUserId;
+
+            var company = _context.Companies.FirstOrDefault(c => c.CreatedById == _userContextService.GetUserId);
+                
+            if(company is null)
+            {
+                throw new BadRequestException("Brak firmy powiązanej z zalogowanym użytkownikiem");
+            }
+
+            
+            jobOffer.CompanyId = company.Id;
+            jobOffer.DateTime = DateTime.Now;
             _context.JobOffers.Add(jobOffer);
             _context.SaveChanges();
 
             return jobOffer.Id;
         }
+
+    
+        
 
         public bool Update(int id, UpdateJobOfferDto dto)
         {
