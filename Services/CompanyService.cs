@@ -71,6 +71,12 @@ namespace Careerio.Services
            .Include(c => c.Gallery)
            .Include(c => c.Technology)
            .SingleOrDefault(c => c.CreatedById == id);
+
+            if (company is null)
+            {
+                throw new NotFoundException("Nie znaleziono firmy.");
+            }
+
             var companyDto = _mapper.Map<CompanyDto>(company);
             return companyDto;
         }
@@ -97,14 +103,14 @@ namespace Careerio.Services
             var company = _context.Companies.FirstOrDefault(c => c.Id == id);
             if (company is null)
             {
-                throw new NotFoundException("Nie znaleziono firmy");
+                throw new NotFoundException("Nie znaleziono firmy.");
             }
 
             var authorizationResult = _authorizationService.AuthorizeAsync(_userContextService.User, company, new ResourceOperationRequirement(ResourceOperation.Delete)).Result;
 
             if (!authorizationResult.Succeeded)
             {
-                throw new ForbidException("Forbidden");
+                throw new ForbidException("Użytkownik nie jest autoryzowany do usunięcia tej firmy.");
             }
 
           
@@ -134,7 +140,7 @@ namespace Careerio.Services
 
             if (!authorizationResult.Succeeded)
             {
-                throw new ForbidException("Forbidden");
+                throw new ForbidException("Użytkownik nie jest autoryzowany do edycji tej firmy.");
             }
 
            

@@ -121,13 +121,13 @@ namespace Careerio.Services
             if (jobOffer is null)
             {
 
-                return false;
+                throw new NotFoundException("Nie znaleziono oferty pracy.");
             }
             var authorizationResult = _authorizationService.AuthorizeAsync(_userContextService.User, jobOffer, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
 
             if (!authorizationResult.Succeeded)
             {
-                throw new ForbidException("Forbidden");
+                throw new ForbidException("Użytkownik nie jest autoryzowany do edycji tego ogłoszenia.");
             }
             jobOffer.ExperienceLevelId = dto.ExperienceLevelId;
             jobOffer.JobTitle = dto.JobTitle;
@@ -175,7 +175,7 @@ namespace Careerio.Services
 
             if (!authorizationResult.Succeeded)
             {
-                throw new ForbidException("Forbidden");
+                throw new ForbidException("Użytkownik nie jest autoryzowany do usunięcia tego ogłoszenia.");
             }
             var requirement = _context.Requirements.FirstOrDefault(j => j.JobOffer == jobOffer);
             _context.Remove(requirement);

@@ -8,32 +8,32 @@ Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu intern
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6S4O14ac90e5DoIJOVlrNwAAAAACAAAAAAAQZgAAAAEAACAAAABCOAyuufQ6e4g4fN2Zk60qEmC0nNFzNlGIoAx3mr2b3AAAAAAOgAAAAAIAACAAAABVPZdWNBFBzaXZk4wSRzy1ZXGXAGIhQV3KPfy0ROzqjIAAAAAfPVZdCa+BaEorbuXgjZJKe78e11UmKvN4jD9HSXOroBl4s6APZQHwyTrpuVIURQ8Ge6s+3iHelZFOikasUZFUUvX5ESJ9l/jo1C2ASFW40gqSL0SG0ULNhORCBq7s8hmDoyQkf/tVp9Yi3dax2lVQ7tt/Ls6b2DC6iq8QD3OHs0AAAAAkOEd6hW6JUhHfBgENPt0lnLyF9cKVqa6M+cS9WuEzpITvsgQHyNwGlnqcgYCqhM2QTFW+GhMK7GL/DbdSf8xX</EncryptedPassword>
     <_PublishTargetUrl>ftp://waws-prod-am2-537.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
-    <History>True|2022-07-06T08:25:48.0001509Z;False|2022-07-06T10:23:28.4352157+02:00;True|2022-07-03T22:54:52.1378337+02:00;True|2022-07-02T11:34:19.3741979+02:00;False|2022-07-02T11:32:28.3674628+02:00;False|2022-07-02T11:30:46.2139146+02:00;True|2022-07-01T09:56:33.3129379+02:00;</History>
+    <History>True|2022-07-06T22:06:19.6281186Z;False|2022-07-07T00:04:12.6287081+02:00;True|2022-07-06T23:55:41.1983667+02:00;True|2022-07-06T10:25:48.0001509+02:00;False|2022-07-06T10:23:28.4352157+02:00;True|2022-07-03T22:54:52.1378337+02:00;True|2022-07-02T11:34:19.3741979+02:00;False|2022-07-02T11:32:28.3674628+02:00;False|2022-07-02T11:30:46.2139146+02:00;True|2022-07-01T09:56:33.3129379+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>06/10/2022 19:14:56</publishTime>
+      <publishTime>10/06/2022 19:14:56</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>06/07/2022 17:57:26</publishTime>
+      <publishTime>07/06/2022 17:57:26</publishTime>
     </File>
     <File Include="AutoMapper.dll">
-      <publishTime>01/05/2022 15:27:54</publishTime>
+      <publishTime>05/01/2022 15:27:54</publishTime>
     </File>
     <File Include="AutoMapper.Extensions.Microsoft.DependencyInjection.dll">
-      <publishTime>01/05/2022 15:57:34</publishTime>
+      <publishTime>05/01/2022 15:57:34</publishTime>
     </File>
     <File Include="Careerio.deps.json">
-      <publishTime>07/06/2022 10:24:52</publishTime>
+      <publishTime>07/07/2022 00:05:18</publishTime>
     </File>
     <File Include="Careerio.dll">
-      <publishTime>07/06/2022 10:24:51</publishTime>
+      <publishTime>07/07/2022 00:05:17</publishTime>
     </File>
     <File Include="Careerio.exe">
-      <publishTime>07/06/2022 10:24:51</publishTime>
+      <publishTime>07/07/2022 00:05:17</publishTime>
     </File>
     <File Include="Careerio.pdb">
-      <publishTime>07/06/2022 10:24:51</publishTime>
+      <publishTime>07/07/2022 00:05:17</publishTime>
     </File>
     <File Include="Careerio.runtimeconfig.json">
       <publishTime>06/29/2022 14:46:25</publishTime>
@@ -159,7 +159,7 @@ Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu intern
       <publishTime>06/30/2020 03:03:46</publishTime>
     </File>
     <File Include="System.Net.Http.Formatting.dll">
-      <publishTime>10/01/2013 22:54:24</publishTime>
+      <publishTime>01/10/2013 22:54:24</publishTime>
     </File>
     <File Include="System.Runtime.Caching.dll">
       <publishTime>11/15/2019 08:37:36</publishTime>
@@ -171,16 +171,16 @@ Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu intern
       <publishTime>11/15/2019 08:37:42</publishTime>
     </File>
     <File Include="System.Web.Cors.dll">
-      <publishTime>10/01/2013 22:54:22</publishTime>
+      <publishTime>01/10/2013 22:54:22</publishTime>
     </File>
     <File Include="System.Web.Http.Cors.dll">
-      <publishTime>10/01/2013 22:54:24</publishTime>
+      <publishTime>01/10/2013 22:54:24</publishTime>
     </File>
     <File Include="System.Web.Http.dll">
-      <publishTime>10/01/2013 22:54:24</publishTime>
+      <publishTime>01/10/2013 22:54:24</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>07/06/2022 10:24:52</publishTime>
+      <publishTime>07/07/2022 00:05:18</publishTime>
     </File>
   </ItemGroup>
 </Project>

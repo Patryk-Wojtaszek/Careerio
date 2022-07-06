@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Careerio.Exceptions;
 
 namespace Careerio.Middleware
 {
@@ -21,11 +22,26 @@ namespace Careerio.Middleware
             {
                 await next.Invoke(context);
             }
-            catch(Exception e)
+            catch(ForbidException forbidException)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync(forbidException.Message);
+            }
+            catch (BadRequestException badRequestException)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(badRequestException.Message);
+            }
+            catch (NotFoundException notFoundException)
+            {
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync(notFoundException.Message);
+            }
+            catch (Exception e)
             {
                 _logger.LogError(e, e.Message);
                 context.Response.StatusCode = 500;
-                context.Response.WriteAsync("Coś poszło nie tak.");
+               await context.Response.WriteAsync("Coś poszło nie tak.");
 
             }
         }

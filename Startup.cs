@@ -24,6 +24,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Careerio.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Careerio.Middleware;
 
 namespace Careerio
 {
@@ -81,6 +82,7 @@ namespace Careerio
             services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
             services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandlerOffers>();
             services.AddScoped<IUserContextService, UserContextService>();
+            services.AddScoped<ErrorHandlingMiddleware>();
             services.AddHttpContextAccessor();
             services.AddSwaggerGen();
 
@@ -105,6 +107,7 @@ namespace Careerio
 
             app.UseRouting();
             app.UseCors("AllowAll");
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();
 
