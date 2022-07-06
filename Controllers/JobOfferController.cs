@@ -56,6 +56,22 @@ namespace Careerio.Controllers
             var jobOffer = _jobOffer.GetJobOfferById(id);
             return Ok(jobOffer);
         }
+
+        [HttpGet("companyId={id}")]
+        [AllowAnonymous]
+        public IActionResult GetJobOffersByCompanyId(int id )
+        {
+            var jobOffer = _jobOffer.GetJobOffersByCompanyId(id);
+            return Ok(jobOffer);
+        }
+        [HttpGet("companyName={name}")]
+        [AllowAnonymous]
+        public IActionResult GetJobOffersByCompanyName(string name)
+        {
+            var jobOffer = _jobOffer.GetJobOffersByCompanyName(name);
+            return Ok(jobOffer);
+        }
+
         [HttpDelete("{id}")]
      
         public void DeleteCompany(int id )

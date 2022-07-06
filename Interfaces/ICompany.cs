@@ -11,6 +11,8 @@ namespace Careerio.Interfaces
     public interface ICompany
     {
         int Add(AddCompanyDto dto);
+
+        
         IEnumerable<CompanyDto> GetCompanies();
 
         CompanyDto GetCompanyById(int id);

@@ -8,6 +8,8 @@ namespace Careerio.Interfaces
 {
     public interface IJobOffer
     {
+        IEnumerable<JobOfferDto> GetJobOffersByCompanyName(string name);
+        IEnumerable<JobOfferDto> GetJobOffersByCompanyId(int id);
         IEnumerable<JobOfferDto> GetJobOffers();
         int Add(AddJobOfferDto dto);
         bool Update(int id, UpdateJobOfferDto dto);

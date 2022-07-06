@@ -28,6 +28,52 @@ namespace Careerio.Services
             _mapper = mapper;
             _authorizationService = authorizationService;
         }
+        public IEnumerable<JobOfferDto>GetJobOffersByCompanyName(string name)
+        {
+            var jobOffer = _context.JobOffers.FirstOrDefault(j => j.Company.Name == name);
+            if (jobOffer is null)
+            {
+                throw new NotFoundException("Nie ma ofert pracy udostępnionych przez podaną firmę.");
+            }
+            var jobOffers = _context.JobOffers
+                     .Include(j => j.Company)
+                     .Include(j => j.ExperienceLevel)
+                     .Include(j => j.RemoteRecruitment)
+                     .Include(j => j.Requirement)
+                     .Include(j => j.Responsibility)
+                     .Include(j => j.TypeOfContract)
+                      .Include(j => j.WorkingHours)
+                      .Where(j => j.Company.Name == name);
+
+
+
+            var jobOffersDto = _mapper.Map<List<JobOfferDto>>(jobOffers);
+            return jobOffersDto;
+        }
+        public IEnumerable<JobOfferDto> GetJobOffersByCompanyId(int id)
+        {
+
+            var jobOffer = _context.JobOffers.FirstOrDefault(j => j.CompanyId == id);
+            if(jobOffer is null)
+            {
+                throw new NotFoundException("Nie ma ofert pracy udostępnionych przez podaną firmę.");
+            }
+
+            var jobOffers = _context.JobOffers
+                  .Include(j => j.Company)
+                  .Include(j => j.ExperienceLevel)
+                  .Include(j => j.RemoteRecruitment)
+                  .Include(j => j.Requirement)
+                  .Include(j => j.Responsibility)
+                 .Include(j => j.TypeOfContract)
+                 .Include(j => j.WorkingHours)
+                 .Where(j => j.CompanyId == id);
+
+        
+
+            var jobOffersDto = _mapper.Map<List<JobOfferDto>>(jobOffers);
+            return jobOffersDto;
+        }
         public IEnumerable<JobOfferDto> GetJobOffers()
         {
             var jobOffers = _context.JobOffers
